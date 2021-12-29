@@ -1,10 +1,37 @@
-import React from "react";
-// import Login from "./pages/Login";
-import NavbarComp from "./components/NavbarComp";
+import { Container } from "react-bootstrap";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useRoutes,
+} from "react-router-dom";
+
+// Layout
+import DefaultLayout from "./layouts/DefaultLayout";
+
+// pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Login from "./pages/Login";
 
 const App = () => {
-  // return <Login />;
-  return <NavbarComp />;
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/about", element: <About /> },
+    { path: "/login", element: <Login /> },
+  ]);
+
+  return routes;
 };
 
-export default App;
+const AppWrapper = () => {
+  return (
+    <DefaultLayout>
+      <Router>
+        <App />
+      </Router>
+    </DefaultLayout>
+  );
+};
+
+export default AppWrapper;
