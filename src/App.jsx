@@ -1,10 +1,4 @@
-import { Container } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useRoutes,
-} from "react-router-dom";
+import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 
 // Layout
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -13,6 +7,8 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
+
+import { UserProvider } from "./context/UserContext";
 
 const App = () => {
   let routes = useRoutes([
@@ -26,11 +22,13 @@ const App = () => {
 
 const AppWrapper = () => {
   return (
-    <DefaultLayout>
-      <Router>
-        <App />
-      </Router>
-    </DefaultLayout>
+    <UserProvider>
+      <DefaultLayout>
+        <Router>
+          <App />
+        </Router>
+      </DefaultLayout>
+    </UserProvider>
   );
 };
 
