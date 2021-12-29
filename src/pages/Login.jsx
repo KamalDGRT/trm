@@ -1,4 +1,6 @@
 import { React, useState, useContext } from "react";
+import { useNavigate  } from "react-router-dom";
+
 import Meta from "../components/Meta";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -15,8 +17,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [, setToken] = useContext(UserContext);
+  const navigate = useNavigate();
 
   const submitLogin = async () => {
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -35,6 +39,7 @@ const Login = () => {
       setErrorMessage(data.detail);
     } else {
       setToken(data.access_token);
+      navigate("/dashboard");
     }
   };
 

@@ -7,6 +7,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 import { UserProvider } from "./context/UserContext";
 
@@ -15,6 +16,7 @@ const App = () => {
     { path: "/", element: <Home /> },
     { path: "/about", element: <About /> },
     { path: "/login", element: <Login /> },
+    { path: "/dashboard", element: <Dashboard /> },
   ]);
 
   return routes;
